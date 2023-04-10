@@ -28,7 +28,9 @@ markdown = ''
 for i, row in enumerate(data):
     if i == 0:
         continue
-    markdown += f'| {i} | ' + ' | '.join(row) + ' |\n'
+    company = row[0]
+    career_site = f'<a href="{row[1]}" target="_blank">{row[1]}</a>'
+    markdown += f'| {i} | {company} | {career_site} |\n'
 
 # Write the markdown to a file
 with open('README.md', 'w') as file:

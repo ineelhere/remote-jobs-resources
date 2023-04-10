@@ -1,7 +1,7 @@
 import csv
 
 # Define the header and footer text
-header = '''# Remote Jobs Resources
+header = '''# 🗺️ Remote Jobs Resources 👍
 
 🌐 This GitHub repository contains a list of companies and their career sites that offer remote job opportunities. Contributions and validations are welcome from anyone interested in remote work, including additional companies that offer remote jobs and information about their hiring process.
 
@@ -9,6 +9,8 @@ header = '''# Remote Jobs Resources
 
 ## List of Remote Companies
 
+| # | Company | Career Site |
+| - | ------- | ----------- |
 '''
 
 footer = '''---
@@ -22,9 +24,11 @@ with open('data.csv', 'r') as file:
     data = list(reader)
 
 # Convert the CSV data to markdown
-markdown = '| ' + ' | '.join(data[0]) + ' |\n' + '| ' + ' | '.join(['---'] * len(data[0])) + ' |\n'
-for row in data[1:]:
-    markdown += '| ' + ' | '.join(row) + ' |\n'
+markdown = ''
+for i, row in enumerate(data):
+    if i == 0:
+        continue
+    markdown += f'| {i} | ' + ' | '.join(row) + ' |\n'
 
 # Write the markdown to a file
 with open('README.md', 'w') as file:
